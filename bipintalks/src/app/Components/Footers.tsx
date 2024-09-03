@@ -4,11 +4,11 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaTiktok } from 'react-icons/fa';
 const Footers  = () => {
   return (
     <footer className="bg-black text-white py-12">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4" style={{maxWidth:'1200px'}}>
         <div className="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
           
           {/* Social Media Section */}
-          <div className="flex flex-col">
+          <div className="flex flex-col w-60">
             <h2 className="text-xl font-semibold mb-4">Follow Us</h2>
             <p className="text-sm mb-4">Explore the world of engineering and technology here.</p>
             <div className="flex space-x-4">
@@ -36,17 +36,19 @@ const Footers  = () => {
           
           {/* Newsletter Subscription Section */}
           <div className="flex flex-col">
-            <h2 className="text-xl font-semibold mb-4">Write to Us</h2>
+            <h6 className="text-xl font-semibold mb-4">Write to Us</h6>
+            <b>Enter your email address here</b>
+
             <form className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-2">
               <input
                 type="email"
                 placeholder="Your email address"
                 className="w-full sm:w-auto flex-1 py-2 px-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
                 required
-              />
+              /><br/>
               <button
                 type="submit"
-                className="w-full sm:w-auto bg-yellow-300 py-2 px-4 rounded-md text-white -800 font-medium hover:bg-yellow-400 transition-colors duration-200"
+                className="w-full sm:w-auto bg-yellow-300 py-2 px-4 text-black rounded-md font-medium hover:bg-yellow-400 transition-colors duration-200"
               >
                 We'll Write to You!
               </button>

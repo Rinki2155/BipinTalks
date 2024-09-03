@@ -46,7 +46,7 @@ function CurrentArticle() {
     const [showMore, setShowMore] = useState([false, false, false, false]);
 
     return (
-        <div className="container mx-auto px-4" style={{ marginBottom: '3%', marginTop: '3%' ,maxWidth: '1200px',}}>
+        <div className="container mx-auto px-4" style={{ marginBottom: '3%', marginTop: '3%' ,maxWidth: '1200px'}}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {articles.map((article, index) => (
                     <div key={index} className="p-4 bg-transparent border-none shadow-none">
@@ -59,7 +59,7 @@ function CurrentArticle() {
                             style={{ objectFit: 'cover' }}
                         />
                         <div className="mt-4">
-                            <h3 className="text-2xl font-semibold">{article.heading}</h3>
+                            <h3 className="text-[20px] font-semibold">{article.heading}</h3>
                             <p className="mt-2 text-gray-600">
                                 {showMore[index] ? article.content : truncateText(article.content, 15)}
                             </p>
