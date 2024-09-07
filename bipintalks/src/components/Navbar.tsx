@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import about from "./about";
 import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
 
-const Headers = () => {
+const Navbar = () => {
     const [isClick, setIsClick] = useState(false);
     const toggleNavbarIcon = () => {
         setIsClick(!isClick);
@@ -48,12 +49,13 @@ const Headers = () => {
                                 <Link href="/" className="hover:underline text-[18px]">
                                     Home
                                 </Link>
-                                <Link href="/blog" className="hover:underline text-[18px] ">
-                                    Blog
-                                </Link>
-                                <Link href="/about" className="hover:underline text-[18px]">
-                                    About
-                                </Link>
+                                <Link href="/blog" className="hover:underline text-[18px]">
+  Blog
+</Link>
+<Link href="/about" className="hover:underline text-[18px]">
+  About
+</Link>
+
                             </div>
                         </div>
 
@@ -132,4 +134,4 @@ const Headers = () => {
     );
 };
 
-export default Headers;
+export default Navbar;

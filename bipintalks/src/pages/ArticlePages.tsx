@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
+import AnimationScroll from './AnimationScroll';
 
 function truncateText(text: string, wordLimit: number) {
     const words = text.split(' ');
@@ -16,10 +17,8 @@ function calculateReadingTime(text: string) {
     const time = Math.ceil(words / wordsPerMinute);
     return time;
 }
-
-function CurrentArticle() {
+function ArticlePages() {
     const currentDate = new Intl.DateTimeFormat('en-US').format(new Date());
-
     const articles = [
         {
             image: "/Images/article_1.png",
@@ -44,42 +43,47 @@ function CurrentArticle() {
     ];
 
     const [showMore, setShowMore] = useState([false, false, false, false]);
-
+    const elementsRef = AnimationScroll(); // Initialize the hook
     return (
-        <div className="container mx-auto px-4" style={{ marginBottom: '3%', marginTop: '3%' ,maxWidth: '1200px'}}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {articles.map((article, index) => (
-                    <div key={index} className="p-4 bg-transparent border-none shadow-none">
-                        <Image
-                            className="rounded"
-                            src={article.image}
-                            alt={article.heading}
-                            width={800}
-                            height={600}
-                            style={{ objectFit: 'cover' }}
-                        />
-                        <div className="mt-4">
-                            <h3 className="text-[20px] font-semibold">{article.heading}</h3>
-                            <p className="mt-2 text-gray-600">
-                                {showMore[index] ? article.content : truncateText(article.content, 15)}
-                            </p>
-                            <button
-                                className="text-blue-700 hover:text-red-700 mt-2"
-                                onClick={() => setShowMore(prev => {
-                                    const updatedShowMore = [...prev];
-                                    updatedShowMore[index] = !updatedShowMore[index];
-                                    return updatedShowMore;
-                                })}
-                            >
-                                {showMore[index] ? 'Show Less' : 'Read More'}
-                            </button>
-                            <p className="mt-4 text-gray-500 text-sm">{currentDate} · {calculateReadingTime(article.content)} min read</p>
+        <>
+            <div className="container mx-auto px-4" style={{ marginBottom: '3%', marginTop: '3%', maxWidth: '1200px' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {articles.map((article, index) => (
+                        <div
+                            key={index}
+                            className="p-4 bg-transparent border-none shadow-none opacity-0"
+                            ref={(el) => (elementsRef.current[index] = el)} // Assign refs to elements
+                        >
+                            <Image
+                                className="rounded"
+                                src={article.image}
+                                alt={article.heading}
+                                width={800}
+                                height={600}
+                                style={{ objectFit: 'cover' }}
+                            />
+                            <div className="mt-4">
+                                <h3 className="text-[20px] font-semibold">{article.heading}</h3>
+                                <p className="mt-2 text-gray-600">
+                                    {showMore[index] ? article.content : truncateText(article.content, 15)}
+                                </p>
+                                <button
+                                    className="text-blue-700 hover:text-red-700 mt-2"
+                                    onClick={() => setShowMore(prev => {
+                                        const updatedShowMore = [...prev];
+                                        updatedShowMore[index] = !updatedShowMore[index];
+                                        return updatedShowMore;
+                                    })}
+                                >
+                                    {showMore[index] ? 'Show Less' : 'Read More'}
+                                </button>
+                                <p className="mt-4 text-gray-500 text-sm">{currentDate} · {calculateReadingTime(article.content)} min read</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+                    ))}
+                </div>
+            </div></>
+    )
 }
 
-export default CurrentArticle;
+export default ArticlePages

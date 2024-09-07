@@ -3,6 +3,7 @@ const nextConfig = {
     images: {
         domains: ["assets.zyrosite.com"],
       }, 
+       
 };
 
 export default nextConfig;
