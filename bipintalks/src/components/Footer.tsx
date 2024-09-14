@@ -1,9 +1,9 @@
 import React from 'react';
-import { FaFacebookF, FaInstagram, FaTwitter, FaTiktok, FaXingSquare, FaYoutube } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaXingSquare, FaYoutube } from 'react-icons/fa';
 
 
 const Footer = () => {
-  
+
   return (
     <footer className="bg-black text-white py-12">
       <div className="container mx-auto px-4" style={{ maxWidth: '1200px' }}>

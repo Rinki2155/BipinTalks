@@ -40,10 +40,12 @@ function ArticlePages() {
             heading: "Effective Communication in Teams",
             content: "Communication is key in any team. It involves clear, concise exchanges of ideas and feedback, ensuring that everyone is on the same page and working towards a common goal."
         }
+        
     ];
 
     const [showMore, setShowMore] = useState([false, false, false, false]);
     const elementsRef = AnimationScroll(); // Initialize the hook
+    
     return (
         <>
             <div className="container mx-auto px-4" style={{ marginBottom: '3%', marginTop: '3%', maxWidth: '1200px' }}>
@@ -54,13 +56,13 @@ function ArticlePages() {
                             className="p-4 bg-transparent border-none shadow-none opacity-0"
                             ref={(el) => (elementsRef.current[index] = el)} // Assign refs to elements
                         >
-                            <Image
+                            <img
                                 className="rounded"
                                 src={article.image}
                                 alt={article.heading}
                                 width={800}
                                 height={600}
-                                style={{ objectFit: 'cover' }}
+                                style={{ objectFit: 'cover',width:'500px',height:'250px' }}
                             />
                             <div className="mt-4">
                                 <h3 className="text-[20px] font-semibold">{article.heading}</h3>

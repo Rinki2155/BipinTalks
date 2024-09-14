@@ -3,7 +3,8 @@ import { useEffect, useRef } from 'react';
 
 
 function AnimationScroll() {
-    const elementsRef = useRef([]);
+    const elementsRef = React.useRef<(HTMLDivElement | null)[]>([]); // Explicitly set the type here
+
 
     useEffect(() => {
       const observer = new IntersectionObserver((entries) => {
