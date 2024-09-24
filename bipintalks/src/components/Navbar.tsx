@@ -17,6 +17,11 @@ const Navbar = () => {
         setShowLinks(!showLinks);
     };
 
+    // Function to close the mobile menu when a link is clicked
+    const closeMobileMenu = () => {
+        setIsClick(false);  // Close the mobile menu
+    };
+
     return (
         <>
             <nav className="bg-black p-6 fixed text-white top-0 left-0 w-full z-50">
@@ -59,30 +64,29 @@ const Navbar = () => {
                                 </button>
                                 <div className="relative">
                                     {showLinks && (
-                                        <>
-                                            <div className="absolute bg-black top-8 right-0 p-4 rounded-lg shadow-lg">
-                                                <Link
-                                                    href="/about"
-                                                    target="_blank"
-                                                    className="block hover:underline text-[18px] mb-2"
-                                                    onClick={toggleDesktopLinks} // Close dropdown after click
-                                                >
-                                                    About
-                                                </Link>
-                                                <Link
-                                                    href="/blog"
-                                                    target="_blank"
-                                                    className="block hover:underline text-[18px] mb-2"
-                                                    onClick={toggleDesktopLinks} // Close dropdown after click
-                                                >
-                                                    Blog
-                                                </Link>
-                                            </div>
-                                        </>
+                                        <div className="absolute bg-black top-8 right-0 p-4 rounded-lg shadow-lg">
+                                            <Link
+                                                href="/about"
+                                                target="_blank"
+                                                className="block hover:underline text-[18px] mb-2"
+                                                onClick={toggleDesktopLinks}
+                                            >
+                                                About
+                                            </Link>
+                                            <Link
+                                                href="/blog"
+                                                target="_blank"
+                                                className="block hover:underline text-[18px] mb-2"
+                                                onClick={toggleDesktopLinks}
+                                            >
+                                                Blog
+                                            </Link>
+                                        </div>
                                     )}
                                 </div>
                             </div>
                         </div>
+
                         {/* Mobile View */}
                         <div className="md:hidden flex items-center">
                             <button
@@ -90,25 +94,26 @@ const Navbar = () => {
                                 onClick={toggleNavbarIcon}
                             >
                                 {isClick ? (
-                                    <FaBars fontSize={30} color="white" />
-                                ) : (
                                     <FaWindowClose fontSize={30} color="white" />
+                                ) : (
+                                    <FaBars fontSize={30} color="white" />
                                 )}
                             </button>
                         </div>
                     </div>
                 </div>
+
                 {/* Mobile Menu */}
                 {isClick && (
                     <div className="md:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 ml-[35px]">
-                            <Link href="/" className="hover:underline text-[18px] ml-12">
+                            <Link href="/" className="hover:underline text-[18px] ml-12" onClick={closeMobileMenu}>
                                 <PlusIcon className="h-7 w-7 text-black-500" />
                             </Link>
-                            <Link href="/" className="hover:underline text-[18px] mb-4 ml-8">
+                            <Link href="/write" className="hover:underline text-[18px] mb-4 ml-8" onClick={closeMobileMenu}>
                                 <PencilSquareIcon className="h-7 w-7 text-black-500" />
                             </Link>
-                            <Link href="/" className="hover:underline text-[18px] mb-4 ml-8">
+                            <Link href="/" className="hover:underline text-[18px] mb-4 ml-8" onClick={closeMobileMenu}>
                                 <Image
                                     src="/Images/1.jpeg"
                                     alt="Profile"
@@ -117,13 +122,13 @@ const Navbar = () => {
                                     width={30}
                                 />
                             </Link>
-                            <Link href="/" className="block hover:underline text-[18px] mb-4">
+                            <Link href="/" className="block hover:underline text-[18px] mb-4" onClick={closeMobileMenu}>
                                 Home
                             </Link>
-                            <Link href="/blog" className="block hover:underline text-[18px] mb-4">
+                            <Link href="/blog" className="block hover:underline text-[18px] mb-4" onClick={closeMobileMenu}>
                                 Blog
                             </Link>
-                            <Link href="/about" className="block hover:underline text-[18px] mb-4">
+                            <Link href="/about" className="block hover:underline text-[18px] mb-4" onClick={closeMobileMenu}>
                                 About
                             </Link>
                         </div>
