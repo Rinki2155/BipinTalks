@@ -6,9 +6,7 @@ import Homepages from "../pages/Homepages";
 export default function Home() {
   return (
     <>
-    <Navbar />
     <Homepages/>
-   <Footer/>
     </>
   );
 }

@@ -30,7 +30,6 @@ function Homepages() {
                 </div>
             </div>
             <ArticlePages />
-
         </>)
 }
 

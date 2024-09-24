@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import AnimationScroll from './AnimationScroll';
 
 function truncateText(text: string, wordLimit: number) {
@@ -21,26 +22,29 @@ function ArticlePages() {
     const currentDate = new Intl.DateTimeFormat('en-US').format(new Date());
     const articles = [
         {
+            id: 1, // Assign a unique id for routing
             image: "/Images/article_1.png",
             heading: "The Art of Defect Management: The Good Bug, the Bad Bug",
-            content: "The art of defect management is not just about fixing all bugs but making informed decisions that balance product quality and timelines with business and user needs The art of defect management is not just about fixing all bugs but making informed decisions that balance product quality and timelines with business and user needs."
+            content: "The art of defect management is not just about fixing all bugs but making informed decisions that balance product quality and timelines with business and user needs."
         },
         {
+            id: 2,
             image: "/Images/article_2.png",
             heading: "Being an Engineering Manager: The realisation",
-            content: "So, here's to the Engineering Managers, those valiant wranglers of code and people! Their life is a reminder that while managing software development is no joke The art of defect management is not just about fixing all bugs but making informed decisions that balance product quality and timelines with business and user needs."
+            content: "So, here's to the Engineering Managers, those valiant wranglers of code and people! Their life is a reminder that while managing software development is no joke."
         },
         {
+            id: 3,
             image: "/Images/article_2.png",
             heading: "Agile Methodologies in Practice",
             content: "Agile methodologies are frameworks that help teams deliver high-quality software products. It involves iterative development, constant feedback, and flexibility to changes in requirements."
         },
         {
+            id: 4,
             image: "/Images/article_1.png",
             heading: "Effective Communication in Teams",
             content: "Communication is key in any team. It involves clear, concise exchanges of ideas and feedback, ensuring that everyone is on the same page and working towards a common goal."
-        }
-        
+        }        
     ];
 
     const [showMore, setShowMore] = useState([false, false, false, false]);
@@ -52,7 +56,7 @@ function ArticlePages() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {articles.map((article, index) => (
                         <div
-                            key={index}
+                            key={article.id}
                             className="p-4 bg-transparent border-none shadow-none opacity-0"
                             ref={(el) => (elementsRef.current[index] = el)} // Assign refs to elements
                         >
@@ -65,7 +69,11 @@ function ArticlePages() {
                                 style={{ objectFit: 'cover',width:'500px',height:'250px' }}
                             />
                             <div className="mt-4">
-                                <h3 className="text-[20px] font-semibold">{article.heading}</h3>
+                            <Link href={`/blog/${article.id}`}>
+
+                                <h3 className="text-[20px] font-semibold">
+                                    {article.heading}</h3>
+                                    </Link>
                                 <p className="mt-2 text-gray-600">
                                     {showMore[index] ? article.content : truncateText(article.content, 15)}
                                 </p>

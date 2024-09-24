@@ -7,19 +7,19 @@ import { FaBars, FaWindowClose } from "react-icons/fa";
 
 const Navbar = () => {
     const [isClick, setIsClick] = useState(false);
-    const [showLinks, setShowLinks] = useState(false); // New state for desktop FaBars click
+    const [showLinks, setShowLinks] = useState(false);
 
     const toggleNavbarIcon = () => {
         setIsClick(!isClick);
     };
 
     const toggleDesktopLinks = () => {
-        setShowLinks(!showLinks); // Toggle desktop FaBars menu
+        setShowLinks(!showLinks);
     };
 
     return (
         <>
-            <nav className="bg-[black] p-6 fixed text-white top-0 left-0 w-full z-50">
+            <nav className="bg-black p-6 fixed text-white top-0 left-0 w-full z-50">
                 <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-6">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center">
@@ -38,12 +38,10 @@ const Navbar = () => {
                         {/* Desktop View */}
                         <div className="hidden md:block">
                             <div className="flex items-center space-x-8 ml-8">
-                                <Link href="/" className="hover:underline text-[18px]">
-                                    <PlusIcon className="h-7 w-7 text-black-500" />
-                                </Link>
-                                <Link href="/" className="hover:underline text-[18px]">
+                                <Link href="/write" className="hover:underline text-[18px]">
                                     <PencilSquareIcon className="h-7 w-7 text-black-500" />
                                 </Link>
+
                                 <Link href="/" className="hover:underline text-[18px]">
                                     <Image
                                         src="/Images/1.jpeg"
@@ -53,26 +51,38 @@ const Navbar = () => {
                                         width={30}
                                     />
                                 </Link>
-
-                                {/* FaBars Icon in Desktop View */}
-                               
-
-                                {/* Conditional rendering of About and Blog in Desktop */}
-                                {showLinks ? (
-                                    <>
-                                        <Link href="/about" className="hover:underline text-[18px]">
-                                            About
-                                        </Link>
-                                        <Link href="/blog" className="hover:underline text-[18px]">
-                                            Blog
-                                        </Link>
-                                    </>
-                                ) :    <button onClick={toggleDesktopLinks} className="text-white text-[18px]">
-                                <FaBars fontSize={30} />
-                            </button>}
+                                <button
+                                    onClick={toggleDesktopLinks}
+                                    className="text-white text-[18px]"
+                                >
+                                    <FaBars fontSize={30} />
+                                </button>
+                                <div className="relative">
+                                    {showLinks && (
+                                        <>
+                                            <div className="absolute bg-black top-8 right-0 p-4 rounded-lg shadow-lg">
+                                                <Link
+                                                    href="/about"
+                                                    target="_blank"
+                                                    className="block hover:underline text-[18px] mb-2"
+                                                    onClick={toggleDesktopLinks} // Close dropdown after click
+                                                >
+                                                    About
+                                                </Link>
+                                                <Link
+                                                    href="/blog"
+                                                    target="_blank"
+                                                    className="block hover:underline text-[18px] mb-2"
+                                                    onClick={toggleDesktopLinks} // Close dropdown after click
+                                                >
+                                                    Blog
+                                                </Link>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
                             </div>
                         </div>
-
                         {/* Mobile View */}
                         <div className="md:hidden flex items-center">
                             <button
@@ -88,7 +98,6 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-
                 {/* Mobile Menu */}
                 {isClick && (
                     <div className="md:hidden">
