@@ -44,12 +44,12 @@ function ArticlePages() {
             image: "/Images/article_1.png",
             heading: "Effective Communication in Teams",
             content: "Communication is key in any team. It involves clear, concise exchanges of ideas and feedback, ensuring that everyone is on the same page and working towards a common goal."
-        }        
+        }
     ];
 
     const [showMore, setShowMore] = useState([false, false, false, false]);
     const elementsRef = AnimationScroll(); // Initialize the hook
-    
+
     return (
         <>
             <div className="container mx-auto px-4" style={{ marginBottom: '3%', marginTop: '3%', maxWidth: '1200px' }}>
@@ -60,20 +60,20 @@ function ArticlePages() {
                             className="p-4 bg-transparent border-none shadow-none opacity-0"
                             ref={(el) => (elementsRef.current[index] = el)} // Assign refs to elements
                         >
-                            <img
+                            <Image
                                 className="rounded"
                                 src={article.image}
                                 alt={article.heading}
                                 width={800}
                                 height={600}
-                                style={{ objectFit: 'cover',width:'500px',height:'250px' }}
+                                style={{ objectFit: 'cover', width: '500px', height: '250px' }}
                             />
                             <div className="mt-4">
-                            <Link href={`/blog/${article.id}`}>
+                                <Link href={`/blog/${article.id}`}>
 
-                                <h3 className="text-[20px] font-semibold">
-                                    {article.heading}</h3>
-                                    </Link>
+                                    <h3 className="text-[20px] font-semibold">
+                                        {article.heading}</h3>
+                                </Link>
                                 <p className="mt-2 text-gray-600">
                                     {showMore[index] ? article.content : truncateText(article.content, 15)}
                                 </p>
