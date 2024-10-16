@@ -2,4 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+  /* Custom Tailwind CSS Classes */
+.section-wrapper {
+    @apply w-full min-h-[80vh] flex flex-col items-center justify-center;
+  }
+  
+  .content-text-wrapper {
+    @apply w-full md:w-[55%] text-center px-4;
+  }
+  
+  .content-text {
+    @apply text-base md:text-[17px] leading-relaxed;
+  }
+  
+  .section-heading {
+    @apply text-2xl sm:text-3xl md:text-5xl font-bold leading-snug;
+  }
+  
+  .author-info {
+    @apply flex flex-col items-center mt-10;
+  }
+  
+  .form-wrapper {
+    @apply w-full md:w-[70%] p-6 space-y-6 bg-purple-100 rounded-lg shadow-md;
+  }
+  
+  .form-heading {
+    @apply text-2xl font-bold text-center;
+  }
+  
+  .form-label {
+    @apply block text-gray-700 font-medium;
+  }
+  
+  .form-input {
+    @apply w-full mt-2 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-300;
+  }
+  
+  .btn-submit {
+    @apply px-4 py-2 bg-yellow-300 text-gray-700 rounded-md font-medium hover:bg-yellow-400 focus:outline-none;
+  }
   

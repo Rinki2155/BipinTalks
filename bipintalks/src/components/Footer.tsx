@@ -6,8 +6,8 @@ import Link from 'next/link';
 const Footer = () => {
 
   return (
-    <footer className="bg-black text-white py-12">
-      <div className="container mx-auto px-4" style={{ maxWidth: '1200px' }}>
+    <footer className="bg-black text-white" style={{paddingTop:'100px'}}>
+      <div className="container mx-auto px-4" style={{ maxWidth: '1300px' }}>
         <div className="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
           {/* Social Media Section */}
           <div className="flex flex-col w-60">
@@ -59,6 +59,7 @@ const Footer = () => {
           <p>© {new Date().getFullYear()} Bipin Talks. All rights reserved.</p>
         </div>
       </div>
+      <div style={{ maxWidth: '1300px', paddingTop:'5%' }}></div>
     </footer>
   );
 };

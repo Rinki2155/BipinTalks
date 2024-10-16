@@ -18,11 +18,12 @@ function calculateReadingTime(text: string) {
     const time = Math.ceil(words / wordsPerMinute);
     return time;
 }
+
 function ArticlePages() {
     const currentDate = new Intl.DateTimeFormat('en-US').format(new Date());
     const articles = [
         {
-            id: 1, // Assign a unique id for routing
+            id: 1, 
             image: "/Images/article_1.png",
             heading: "The Art of Defect Management: The Good Bug, the Bad Bug",
             content: "The art of defect management is not just about fixing all bugs but making informed decisions that balance product quality and timelines with business and user needs."
@@ -52,13 +53,13 @@ function ArticlePages() {
 
     return (
         <>
-            <div className="container mx-auto px-4" style={{ marginBottom: '3%', marginTop: '3%', maxWidth: '1200px' }}>
+            <div className="container mx-auto px-4" style={{ marginBottom: '3%', marginTop: '3%', maxWidth: '1300px' }}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {articles.map((article, index) => (
                         <div
                             key={article.id}
                             className="p-4 bg-transparent border-none shadow-none opacity-0"
-                            ref={(el) => (elementsRef.current[index] = el)} // Assign refs to elements
+                            ref={(el) => { elementsRef.current[index] = el; }} // Assign refs without returning anything
                         >
                             <Image
                                 className="rounded"
@@ -66,13 +67,12 @@ function ArticlePages() {
                                 alt={article.heading}
                                 width={800}
                                 height={600}
-                                style={{ objectFit: 'cover', width: '500px', height: '250px' }}
+                                style={{ objectFit: 'cover', width: '600px', height: '320px' }}
                             />
                             <div className="mt-4">
+                                {/* <Link href={`/blog/${article.id}`}> */}
                                 <Link href={`/blog/${article.id}`}>
-
-                                    <h3 className="text-[20px] font-semibold">
-                                        {article.heading}</h3>
+                                    <h3 className="text-[20px] font-semibold">{article.heading}</h3>
                                 </Link>
                                 <p className="mt-2 text-gray-600">
                                     {showMore[index] ? article.content : truncateText(article.content, 15)}
@@ -92,8 +92,9 @@ function ArticlePages() {
                         </div>
                     ))}
                 </div>
-            </div></>
-    )
+            </div>
+        </>
+    );
 }
 
-export default ArticlePages
+export default ArticlePages;
